@@ -1,6 +1,58 @@
 
 
-var words = ["DUMMY" , "DUMB" , "DUMBER" , "DUMBEST" , "BILL" , "TED" , "TENLETTERS"];
+var words = ["ALLIGATOR",
+"ANT",
+"BEAR",
+"BEE",
+"BIRD",
+"CAMEL",
+"CAT",
+"CHEETAH",
+"CHICKEN",
+"CHIMPANZEE",
+"COW",
+"CROCODILE",
+"DEER",
+"DOG",
+"DOLPHIN",
+"DUCK",
+"EAGLE",
+"ELEPHANT",
+"FISH",
+"FLY",
+"FOX",
+"FROG",
+"GIRAFFE",
+"GOAT",
+"GOLDFISH",
+"HAMSTER",
+"HIPPOPOTAMUS",
+"HORSE",
+"KANGAROO",
+"KITTEN",
+"LION",
+"LOBSTER",
+"MONKEY",
+"OCTOPUS",
+"OWL",
+"PANDA",
+"PIG",
+"PUPPY",
+"RABBIT",
+"RAT",
+"SCORPION",
+"SEAL",
+"SHARK",
+"SHEEP",
+"SNAIL",
+"SNAKE",
+"SPIDER",
+"SQUIRREL",
+"TIGER",
+"TURTLE",
+"WOLF",
+"ZEBRA",
+];
 var wins = 0;
 var losses = 0;
 var word = "";
@@ -19,6 +71,9 @@ function randomWord(arr)
 function game()
 {
     word = randomWord(words);
+    string = "";
+    $("#wrong-guesses").empty();
+    tries = 9;
     
     for(var i = 0; i < word.length; i ++)
     {
@@ -27,9 +82,8 @@ function game()
     
     $("#word-blanks").text(string);
     $("#win-counter").text(wins);
-    $("#loss-counter").text(wins);
+    $("#loss-counter").text(losses);
     $("#guesses-left").text(tries);
-    console.log(word);
 }
 
 $(document).ready(function() {
@@ -74,10 +128,7 @@ document.onkeyup = function ( event ) {
     {
         if(!(string.includes("_")))
         {   
-            tries = 9;
             wins++;
-            string = "";
-            $("#wrong-guesses").empty();
             game();
         }
         
@@ -89,10 +140,7 @@ document.onkeyup = function ( event ) {
         $("#wrong-guesses").append(" " + letter + " ");
         if(tries < 1)
         {
-            tries = 9;
             losses++;
-            string = "";
-            $("#wrong-guesses").empty();
             game();
         }
     }
