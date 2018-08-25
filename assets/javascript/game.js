@@ -129,6 +129,7 @@ document.onkeyup = function ( event ) {
         if(!(string.includes("_")))
         {   
             wins++;
+            alert("You got it , the word was " + word);
             game();
         }
         
@@ -141,6 +142,7 @@ document.onkeyup = function ( event ) {
         if(tries < 1)
         {
             losses++;
+            alert("Sorry you ran out of tries, the word was " + word);
             game();
         }
     }
